@@ -1,0 +1,21 @@
+<input type="text" id="myInput" placeholder="文字数制限:100文字" maxlength="100">
+<p id="output">残り100文字</p>
+
+<script>
+	const inputField = document.getElementById('myInput');
+	const output = document.getElementById('output');
+	const maxLength = 100;
+
+	// inputイベント：入力されるたびに反応
+	inputField.addEventListener('input', () => {
+	    const currentLength = inputField.value.length;
+	    const remaining = maxLength - currentLength;
+
+	    output.textContent = `残り${remaining}文字`;
+	});
+
+	// changeイベント：フォーカスが外れたときに反応
+	inputField.addEventListener('change', () => {
+	    alert(inputField.value.length + '文字使いました');
+	});
+</script>

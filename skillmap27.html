@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: rgb(2, 43, 81);
+    }
+    .content{
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(253, 253, 253);
+        border-radius: 50px;
+        width: 500px;
+        height: 230px;
+    }
+
+    h1{
+        text-align: center;
+        font-size: x-large;
+        font-weight: bold;
+    }
+    p{
+        text-align: center;
+        font-weight: 400;
+        font-size: small;
+    }
+
+    button{
+        display: block;
+        margin: 20px auto 0 auto;
+        width: 200px;
+        height: 50px;
+        font-size: larger;
+        border-radius: 20px;
+        background-color: rgb(255, 188, 62);
+        box-shadow: -4px 0px 12px 0px rgba(0, 0, 0, 0.2);
+        
+    }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="content">
+    <h1 id="title"></h1>
+    <p id="Intro"></p>
+    <button id="chLang"></button>
+    </div>
+
+    <script>
+
+        const params = new URLSearchParams(location.search);
+        const lang = params.get("lang");
+
+        const title = document.getElementById("title");
+        const Intro = document.getElementById("Intro");
+        const button = document.getElementById("chLang");
+
+        if (lang === "en") {
+            title.textContent = "About me"
+            Intro.innerHTML = "Hi! I'm ISSHIN! <br> 3Ddesign,Sewing,LetherCrafting etc.."
+            button.textContent = ">日本語"
+        } else {
+            title.textContent = "自己紹介";
+            Intro.innerHTML = "こんにちは！一心です！<br>3Dデザイン,裁縫,レザークラフトなどなんでもやります！";
+            button.textContent = ">English";
+        }
+
+        button.addEventListener("click", () => {
+        const newLang = (lang === "en") ? "jp" : "en";
+        location.href = location.pathname + "?lang=" + newLang;
+        });
+        
+
+    </script>
+
+  </body>    
+</html>

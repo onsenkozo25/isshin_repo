@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #eaeaea;
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      transition: opacity 0.5s ease; /* ← これでアニメーション */
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    button {
+      padding: 5px 10px;
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: rgb(49, 103, 211);
+      color: aliceblue;
+      border: none;
+    }
+
+    #addBtn {
+      margin-bottom: 20px;
+    }
+
+    .delete-btn {
+    background-color: #ae1692; /* 赤 */
+    color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button id="addBtn">追加</button>
+  <ul id="itemList"></ul>
+
+  <script>
+    const addBtn = document.getElementById('addBtn');
+    const itemList = document.getElementById('itemList');
+    let count = 1;
+
+    addBtn.addEventListener('click', () => {
+      const li = document.createElement('li');
+      li.textContent = `アイテム ${count}`;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('delete-btn');
+      deleteBtn.textContent = '削除';
+
+      deleteBtn.addEventListener('click', () => {
+        li.classList.add('fade-out');
+        setTimeout(() => {
+          li.remove();
+        }, 500); // フェードアウト後に削除
+      });
+
+      li.appendChild(deleteBtn);
+      itemList.appendChild(li);
+      count++;
+    });
+  </script>
+
+</body>
+</html>

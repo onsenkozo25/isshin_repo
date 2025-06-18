@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blog-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.blog-card {
+  background-color: rgb(229, 255, 236);
+  border-bottom: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: left;
+  position: relative;
+}
+
+.blog-card:hover {
+  border-left: none;
+  border-bottom: none;
+  border-top: 2px solid #14141475;
+  border-right: 2px solid #14141485;
+  background-color: #94d393;
+}
+
+.news-label {
+  position: absolute;
+  top: -20px; /* ★カードの外に浮かせる */
+  left: 16px; /* ★カードの左端に揃える */
+  background-color: #1d3557;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="blog-wrapper">
+  <div class="news-label">【miseル website新装】</div>
+  <div class="blog-card">
+    <div class="news-item">
+      <div class="news-date">2025.05.08</div>
+      <div class="news-text">新しくなった注文方法は"こちら"</div>
+    </div>
+  </div>
+</div>
+
+    
+</body>
+</html>

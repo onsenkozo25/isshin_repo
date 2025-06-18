@@ -1,0 +1,25 @@
+<div id="form">
+  <p id="label">選択されているものは<span id="selectedLabel"></span>です</p>
+  <label><input type="radio" name="gender" value="男性">男性</label>
+  <label><input type="radio" name="gender" value="女性">女性</label>
+  <label><input type="radio" name="gender" value="その他">その他</label>
+</div>
+
+<script>
+  const radios = document.querySelectorAll('input[name="gender"]');
+  const label = document.getElementById('selectedLabel');
+
+  radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      const selected = document.querySelector('input[name="gender"]:checked');
+      if (selected) {
+        label.textContent = selected.value;
+      } else {
+        label.textContent = 'ないです';
+      }
+    });
+  });
+
+  const initial = document.querySelector('input[name="gender"]:checked');
+  label.textContent = initial ? initial.value : 'ない';
+</script>

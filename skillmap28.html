@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      height: 2000px;
+      margin: 0;
+    }
+
+    .jump {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 100px;
+      border-radius: 25px;
+      background-color: hsl(0, 80%, 60%);
+      font-size: large;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+    }
+  </style>
+</head>
+<body>
+
+  <button class="jump" onclick="window.open('https://onsenkozo.jp/index.php', '_blank')">
+    新しいタブを開く
+  </button>
+
+  <script>
+    const btn = document.querySelector('.jump');
+
+    function getColorfulScrollColor() {
+      const hue = window.scrollY % 360; 
+      return `hsl(${hue}, 80%, 60%)`;   
+    }
+
+    window.addEventListener("scroll", () => {
+      btn.style.backgroundColor = getColorfulScrollColor();
+    });
+  </script>
+
+</body>
+</html>

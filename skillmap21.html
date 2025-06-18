@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レスポンシブカード</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: rgb(151, 215, 209);
+      border: 2px solid #ccc;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 16px;
+      width: 100%; /* モバイルでは1列 */
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .card img {
+    background-color: whitesmoke;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid #aaa;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin: 12px 0;
+    }
+
+    .card button {
+      background-color: rgb(227, 134, 27);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    /* 画面幅600px以上 → 2列 */
+    @media (min-width: 600px) {
+      .card {
+        width: calc(50% - 20px);
+      }
+    }
+
+    /* 画面幅900px以上 → 3列 */
+    @media (min-width: 900px) {
+      .card {
+        width: calc(33.33% - 20px);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <div class="card">
+      <img src="https://www.lego.com/cdn/cs/set/assets/blt742e8599eb5e8931/40649.png" alt="レゴ1">
+      <h2>ブロック1</h2>
+      <button>カートに追加</button>
+    </div>
+
+    <div class="card">
+      <img src="https://www.lego.com/cdn/cs/set/assets/blt742e8599eb5e8931/40649.png" alt="レゴ2">
+      <h2>ブロック2</h2>
+      <button>カートに追加</button>
+    </div>
+
+    <div class="card">
+      <img src="https://www.lego.com/cdn/cs/set/assets/blt742e8599eb5e8931/40649.png" alt="レゴ3">
+      <h2>ブロック3</h2>
+      <button>カートに追加</button>
+    </div>
+
+    <div class="card">
+      <img src="https://www.lego.com/cdn/cs/set/assets/blt742e8599eb5e8931/40649.png" alt="レゴ4">
+      <h2>ブロック4</h2>
+      <button>カートに追加</button>
+    </div>
+  </div>
+
+</body>
+</html>

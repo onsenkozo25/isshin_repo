@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="skillmap13.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form class="smart-form"action="/submit" method="post">
+        <label>名前
+          <input type="text" name="username">
+        </label><br>
+
+        <label>メールアドレス
+            <br>
+            <input type="email" name="mailaddress">
+        </label><br>
+        
+        <label>趣味
+        <label><input type="checkbox" name="hobby"value="sports" checked >スポーツ</label>
+        <label><input type="checkbox" name="hobby"value="music">音楽</label>
+        <label><input type="checkbox" name="hobby" value="travel"> 旅行</label>
+        </label><br>
+      
+        <label>自由記述欄
+          <textarea name="message" rows="4" cols="30"></textarea>
+        </label><br>
+      
+        <button type="submit">送信</button>
+      </form>
+</body>
+</html>

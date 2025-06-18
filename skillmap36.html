@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Todoリスト with localStorage</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    text-align: center;
+    padding-top: 40px;
+    /* ↓ここからグラデーション */
+    background: linear-gradient(to right, #0c1e39, #1c0f76);
+    min-height: 100vh;
+    margin: 0;
+    }
+
+    .container{
+        width: 80vh;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.2); /* 背景を薄く白で */
+        padding: 20px;
+        border-radius: 10px;        
+    }
+
+    h2{
+        color: #ffffff;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: hwb(234 32% 27%);
+      color: white;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: 20px auto 0;
+    }
+
+    li {
+      background-color: white;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background-color: #e6a85c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="container">
+  <h2>Todoリスト</h2>
+  <input type="text" id="taskInput" placeholder="タスクを入力">
+  <button onclick="addTask()">タスク追加</button>
+
+  <ul id="taskList"></ul>
+  <div>
+
+  <script>
+    let tasks = [];
+
+    // localStorageから読み込み
+    window.onload = function() {
+      const saved = localStorage.getItem("tasks");
+      if (saved) {
+        tasks = JSON.parse(saved);
+        renderTasks();
+      }
+    }
+
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (task === "") return;
+
+      tasks.push(task);
+      saveTasks();
+      renderTasks();
+
+      input.value = "";
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+      renderTasks();
+    }
+
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function renderTasks() {
+      const list = document.getElementById("taskList");
+      list.innerHTML = "";
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${task}
+          <button class="delete-btn" onclick="deleteTask(${index})">削除</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カード作成フォーム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f4f4f4;
+    }
+
+    form {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+
+    input, textarea {
+      padding: 10px;
+      width: 300px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+    
+      background-color: #274b8b;
+      color: white;
+      width: 320px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .card {
+      display: inline-block;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm">
+    <input type="text" name="username" placeholder="名前を入力" required
+       oninvalid="this.setCustomValidity('入力忘れてるよ！')"
+       oninput="this.setCustomValidity('')">
+
+    <input type="text" name="userage" placeholder="年齢を入力" required
+      oninvalid="this.setCustomValidity('入力忘れてるよ！')"
+       oninput="this.setCustomValidity('')">
+    
+    <input type="text" name="userhobby" placeholder="趣味を入力" required
+          oninvalid="this.setCustomValidity('入力忘れてるよ！')"
+       oninput="this.setCustomValidity('')">
+    
+    <button type="submit">カードを作成</button>
+  </form>
+
+  <!-- カード表示用 -->
+  <div id="cardContainer" style="display: none;"></div>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const container = document.getElementById('cardContainer');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // ページ再読み込みを防ぐ
+
+      // 入力値を取得
+      const name = form.elements['username'].value;
+      const age = form.elements['userage'].value;
+      const hobby = form.elements['userhobby'].value;
+
+      // カードを作成
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h3>${name}</h3><p>年齢: ${age}</p><p>趣味: ${hobby}</p>`;
+
+      // 表示領域にカードを追加
+      container.appendChild(card);
+      container.style.display = 'block';
+
+      // フォームをリセット
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

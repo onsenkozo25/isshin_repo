@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+  #dots {
+      display: none;
+      margin: 20px auto;
+      height: 40px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #3498db;
+      border-radius: 50%;
+      animation: jump 0.6s infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes jump {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+
+    #loadingMessage {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #image {
+    display: none;
+    margin: 20px auto; 
+    width: 300px;
+    display: block;  
+    }
+
+    .center {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    button{
+        background-color: rgb(67, 130, 184);
+        color: rgb(238, 238, 238);
+        border: none;
+        border-radius: 10px;
+        width: 200px;
+        height: 40px;
+        
+        
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center">
+    <button id="display">画像を表示</button>
+
+    <div id="loadingMessage">読み込み中です...</div>
+    <div id="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    </div>
+
+    <img id="image" src="https://stickershop.line-scdn.net/stickershop/v1/product/1349540/LINEStorePC/main.png?v=1" alt="画像が表示されます">
+  </div>
+
+  <script>
+    const button = document.getElementById('display');
+    const spinner = document.getElementById('dots');
+    const message = document.getElementById('loadingMessage');
+    const image = document.getElementById('image');
+
+    button.addEventListener('click', () => {
+
+      spinner.style.display = 'block';
+      message.style.display = 'block';
+      image.style.display = 'none';
+
+
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        message.style.display = 'none';
+        image.style.display = 'block';
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
